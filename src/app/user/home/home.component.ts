@@ -24,8 +24,8 @@ sample:any[]=[{assign:"Hello"}]
 isEmpty:boolean=true
 p:number=1
 sortedIssues:any[]
-// private url='http://localhost:3000'
-private url="http://api.my-app-dev.tk"
+ private url='http://localhost:3000'
+//private url="http://api.my-app-dev.tk"
 public socket
   constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) { }
   status:boolean=false

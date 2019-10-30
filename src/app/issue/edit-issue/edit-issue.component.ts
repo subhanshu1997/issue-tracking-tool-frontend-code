@@ -14,8 +14,8 @@ import * as io from 'socket.io-client'
   styleUrls: ['./edit-issue.component.css']
 })
 export class EditIssueComponent implements OnInit {
-  //private url='http://localhost:3000'
-  private url="http://api.my-app-dev.tk"
+  private url='http://localhost:3000'
+  //private url="http://api.my-app-dev.tk"
   private socket
   editAssign:boolean=false
   issueForm=new FormGroup({

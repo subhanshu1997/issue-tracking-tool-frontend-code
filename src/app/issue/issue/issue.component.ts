@@ -28,8 +28,8 @@ reporterItems:String[]=[
 indexItems:any[]=[
 
 ]
-//private url='http://localhost:3000'
-private url="http://api.my-app-dev.tk"
+private url='http://localhost:3000'
+//private url="http://api.my-app-dev.tk"
 public socket
   constructor(private appService:AppService,private router:Router,private socketService:SocketService,private toastr:ToastrService) {
     let todayDate=formatDate(new Date(),'yyyy-MM-dd','en-US')

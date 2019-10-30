@@ -12,8 +12,8 @@ import * as io from 'socket.io-client'
   styleUrls: ['./view-issue.component.css']
 })
 export class ViewIssueComponent implements OnInit {
-  //private url='http://localhost:3000'
-  private url="http://api.my-app-dev.tk"
+  private url='http://localhost:3000'
+ // private url="http://api.my-app-dev.tk"
 
 public socket
   issueForm=new FormGroup({

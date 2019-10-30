@@ -6,8 +6,8 @@ import{CookieService} from 'ngx-cookie-service'
   providedIn: 'root'
 })
 export class AppService {
-//private url='http://localhost:3000/api/v1/issue-tracking-tool'
-private url='http://api.my-app-dev.tk/api/v1/issue-tracking-tool'
+private url='http://localhost:3000/api/v1/issue-tracking-tool'
+//private url='http://api.my-app-dev.tk/api/v1/issue-tracking-tool'
 auth='';
 name=''
 firstName:String

@@ -29,8 +29,8 @@ export class ViewAllIssueComponent implements OnInit {
   searchForm=new FormGroup({
     search:new FormControl('',Validators.required)
   })
-  //private url='http://localhost:3000'
-  private url="http://api.my-app-dev.tk"
+  private url='http://localhost:3000'
+  //private url="http://api.my-app-dev.tk"
   public socket
     constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) { }
     status:boolean=false
