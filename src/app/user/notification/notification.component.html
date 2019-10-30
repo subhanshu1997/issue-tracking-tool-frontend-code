@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Notification</title>
+</head>
+
+<body>
+        <div class="container" id="navbar-container">
+                <section id="section">
+                    <nav class="navbar navbar-light navbar-expand-md" id="navbar">
+                        <div class="container-fluid"><button class="btn btn-primary" [routerLink]="['/home']" id="issues" type="button">Issues</button><button class="btn btn-primary" (click)="ngOnInit()" id="issues" type="button">Notifications</button><button class="btn btn-primary" [routerLink]="['/view-all-issue']" id="issues" type="button">View All Issues</button><button class="btn btn-primary" id="create-issue" [routerLink]="['/issue']"  type="button">Create Issue</button><button class="btn btn-primary" id="logout" (click)="logout()" type="button">Logout</button></div>
+                    </nav>
+                </section>
+            </div>
+    <div class="container" id="main-container">
+        <div class="table-responsive" id="table" *ngIf="isEmpty==false">
+            <table class="table">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let object of notifications">
+                            <div class="card" id="card">
+                                <div class="card-body">
+                                    <a (click)="viewIssue(object)">
+                                    <p class="card-text" id="card-paragraph">{{object.message}}</p>
+                                    </a></div>
+                            </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="nodata" class="alert alert-danger" *ngIf="isEmpty==true">
+            No Notifications 
+        </div>
+    </div>
+</body>
+
+</html>

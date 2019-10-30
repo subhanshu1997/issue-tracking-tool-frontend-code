@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Issue</title>
+</head>
+
+<body id="body">
+        <div class="container" id="navbar-container">
+                <section id="section">
+                    <nav class="navbar navbar-light navbar-expand-md" id="navbar">
+                        <div class="container-fluid"><button class="btn btn-primary" [routerLink]="['/home']" id="issues" type="button">Issues</button><button class="btn btn-primary" [routerLink]="['/notification']" id="issues" type="button">Notifications</button><button class="btn btn-primary" [routerLink]="['/view-all-issue']" id="issues" type="button">View All Issues</button><button class="btn btn-primary" id="create-issue" [routerLink]="['/issue']"  type="button">Create Issue</button><button class="btn btn-primary" id="logout" (click)="logout()" type="button">Logout</button></div>
+                    </nav>
+                </section>
+            </div>
+    <div class="container" id="main-container">
+        <div class="row text-center" id="row-1">
+            <div class="col">
+                <h1 id="issue-heading">Report an Issue</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="container-form">
+        <div class="row" id="row-form">
+            <div class="col" id="column-form" style="background-color: rgba(249,246,246,0.16);">
+                <form [formGroup]="issueForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row" id="row-2">
+                        <div class="col text-center" id="column-title">
+                            <h3 id="title">Title</h3>
+                        </div>
+                        <div class="col"><input name="title" class="form-control" formControlName="title" [ngClass]="{'is-invalid':issueForm.get('title').touched && issueForm.get('title').invalid}" type="text" id="title-input" placeholder="Title">
+                        <div class="invalid-feedback">
+                            <div>
+                                Title is required
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div id="checkbox-container">
+                        <h5>Check to Assign Issue to someone else</h5><input type="checkbox" id="checkbox" (click)="Assign()">
+                    </div>
+                    <div *ngIf="editAssign==true" class="form-row" id="row-3">
+                        <div class="col text-center" id="column-reporter">
+                            <h3 id="reporter">Assign To</h3>
+                        </div>
+                        <div class="col text-center" id="column-dropdown">
+                            <div><select formControlName="reporter" class="btn btn-primary" id="reporter-dropdown">Dropdown
+                                <option *ngFor="let object of reporterItems" [value]="object">{{object}}</option>
+                                </select>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-row" id="row-4">
+                        <div class="col text-center" id="column-date">
+                            <h3 id="date-of-issue">Date Of Issue</h3>
+                        </div>
+                        <div class="col"><input class="form-control" formControlName="date" id="date" type="date"></div>
+                    </div>
+                    <div class="form-row" id="row-7">
+                        <div class="col text-center" id="column-date">
+                            <h3 id="Description">Description</h3>
+                        </div>
+                        <div class="col"id="rich-text-editor"><quill-editor formControlName="description" [ngClass]="{'is-invalid':issueForm.get('description').touched && issueForm.get('description').invalid}"></quill-editor>
+                        <div *ngIf="issueForm.get('description').touched && issueForm.get('description').value==''" class="text-danger">
+                            Please enter description
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="row-5">
+                        <div class="col text-center" id="column-status">
+                            <h3 id="status">Status</h3>
+                        </div>
+                        <div class="col text-center" id="column-dropdown2">
+                            <div class="dropdown"><select formControlName="status" class="btn btn-primary dropdown-toggle"  id="status-dropdown" >Status
+                                <option *ngFor="let object of statusItems" [value]="object">{{object}}</option>
+                            </select></div>
+                        </div>
+                    </div>
+                    <div class="form-row text-center" id="row-6">
+                        <div class="col"><button class="btn btn-primary" id="submit" type="submit" [disabled]="!issueForm.valid">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

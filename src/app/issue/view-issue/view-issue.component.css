@@ -1,0 +1,257 @@
+#row-1 {
+    padding: 2%;
+  }
+  
+  #row-6 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-2 {
+    padding: 2%;
+    border: 1px solid #783496;
+    margin: 0px;
+  }
+  
+  #row-3 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-4 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-5 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-form {
+    background-color: rgba(244,236,236,0.53);
+  }
+  
+  #logout {
+    right: 0px;
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+
+  #container-form {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  #navbar-container {
+    width: 100%;
+  }
+
+  #issues {
+    font-size: 22px;
+    background-color: rgba(0,123,255,0);
+    color: rgb(14,14,14);
+    font-weight: 600;
+    border-width: 1px;
+  }
+  
+  #navbar {
+    background-color: rgba(251,251,251,0.46);
+  }
+  
+  #create-issue {
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+  
+  #section {
+    width: 100%;
+    background-color: rgba(255,255,255,0.12);
+  }
+  
+  
+  #body {
+    height: auto;
+    min-height: 100%;
+    background-color: rgb(215,107,107);
+    background-image: url("../../../assets/img/issue.gif");
+  }
+  
+  #issue-heading {
+    color: #593967;
+  }
+  
+  #title-input {
+    background-color: rgba(128,128,128,0.66);
+    color: rgb(255,255,255);
+    border-color: #783496;
+    cursor:no-drop;
+  }
+  
+  #title {
+    color: #3e234a;
+  }
+
+  #watchListDiv{
+    text-align: center;
+    padding: 1%;
+  }
+  #watchList{
+    background-color: #793496ea;
+    border: 0px;
+    width: 10vw;
+    font-size: 20px;
+    color: white;
+    margin: 1%;
+    border-radius: 15px;
+  }
+  #delete{
+    background-color: #783496;
+    border: 0px;
+    border-radius: 25px;
+    width: 20vw;
+    font-size: 20px;
+    float: right;
+    margin:2% ;
+    color: white;
+
+  }
+
+  .textarea{
+    background-color: rgba(185, 170, 194, 0.712);
+    width: 100%;
+    color: black;
+    font-size: 17px;
+  }
+
+
+  #edit{
+    background-color: #783496;
+    border: 0px;
+    border-radius: 25px;
+    width: 20vw;
+    font-size: 20px;
+    float: left;
+    margin:2% ;
+    color: white;
+
+  }
+
+
+  
+  #reporter-dropdown {
+    width: 50%;
+    background-color: rgba(247,244,245,0.67);
+    color: rgb(25,24,24);
+    border-color: #783496;
+    cursor:no-drop;
+  }
+  
+  #status-dropdown {
+    width: 50%;
+    background-color: rgba(247,244,245,0.67);
+    color: rgb(25,24,24);
+    border-color: #783496;
+    cursor:no-drop;
+  }
+  
+  #column-form {
+    padding: 0px;
+  }
+  
+  #status {
+    color: #3e234a;
+  }
+  
+  #date-of-issue {
+    color: #3e234a;
+    cursor:no-drop;
+  }
+  
+  #reporter {
+    color: #3e234a;
+  }
+  
+  #date {
+    background-color: rgba(128,128,128,0.66);
+    color: rgb(255,255,255);
+    border-color: #783496;
+    cursor:no-drop;
+  }
+  
+  #submit {
+    background-color: #783496;
+    border: 0px;
+    width: 40%;
+    font-size: 20px;
+    margin-right: 5%;
+  }
+
+  #row-7 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #Description {
+    color: #3e234a;
+  }
+  #rich-text-editor{
+      width: 100%;
+      height: fit-content;
+      cursor:no-drop;
+      background-color: rgba(128,128,128,0.66);
+      color: rgb(255,255,255);
+      border-color: #783496;
+  }
+
+  #cross{
+    cursor:no-drop;
+  }
+
+
+  #main-container {
+    margin-top: 2%;
+    padding: 0px 4%;
+  }
+  
+  #user {
+    width: 20%;
+  }
+  
+  #comment-container {
+    padding: 0px 44.3125px;
+  }
+  
+  #button {
+    margin-top: 1%;
+  }
+  
+  #table-comment {
+    width: 70%;
+    height: 10vh;
+    color: white;
+    padding: 0px;
+  }
+  
+  #table-username {
+    width: 30%;
+    height: 10vh;
+    color: white;
+    padding: 0px;
+  }
+  
+  
+  

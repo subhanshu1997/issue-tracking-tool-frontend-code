@@ -1,0 +1,53 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
+import{Router} from '@angular/router'
+import{ToastrService} from 'ngx-toastr'
+import {SocketService} from '../../socket.service'
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+loginForm=new FormGroup({
+  username:new FormControl('',Validators.required),
+  password:new FormControl('',Validators.required)
+})
+  constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router) { }
+
+  ngOnInit() {
+  }
+errormessage:String=''
+status=false
+  login=()=>{
+    let data={
+      userName:this.loginForm.get('username').value,
+      password:this.loginForm.get('password').value
+    }
+    this.appService.signin(data).subscribe(
+      data=>{
+        console.log(data)
+        // console.log(data.data.userDetails.userId)
+        // localStorage.setItem('userName',data.data.userDetails.userName)
+        
+        // console.log(data.data.authToken)
+        if(data.message=='Invalid Username Or Password'){
+        // this.status=true
+        // this.errormessage=data.message
+        this.toastr.error(data.message)      
+      }
+        else{
+        window.sessionStorage.setItem('authToken',data.data.authToken)
+        window.sessionStorage.setItem('name',data.data.userDetails.firstName+" "+data.data.userDetails.lastName)
+        window.sessionStorage.setItem('userId',data.data.userDetails.userId)
+          this.status=false
+          this.router.navigate(['/home'])
+          this.toastr.success(data.message)
+        }
+      }
+    )
+
+  }
+
+}

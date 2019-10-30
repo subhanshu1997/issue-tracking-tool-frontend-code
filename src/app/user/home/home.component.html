@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>fetch-issues</title>
+</head>
+
+<body id="body">
+    <div class="container" id="navbar-container">
+        <section id="section">
+            <nav class="navbar navbar-light navbar-expand-md" id="navbar">
+                <div class="container-fluid"><button class="btn btn-primary" (click)="ngOnInit()" id="issues" type="button">Issues</button><button class="btn btn-primary" [routerLink]="['/notification']" id="issues" type="button">Notifications</button><button class="btn btn-primary" [routerLink]="['/view-all-issue']" id="issues" type="button">View All Issues</button><button class="btn btn-primary" id="create-issue" [routerLink]="['/issue']"  type="button">Create Issue</button><button class="btn btn-primary" id="logout" (click)="logout()" type="button">Logout</button></div>
+            </nav>
+        </section>
+    </div>
+    <div class="container" id="main-container">
+        <div *ngIf="isEmpty==false" class="table-responsive table table-striped" id="table1">
+            <table class="table" matSort (matSortChange)="sortData($event)">
+                <thead>
+                    <tr>
+                        <th id="title" mat-sort-header="title">Title</th>
+                        <th id="reporter" mat-sort-header="reporter">Reporter</th>
+                        <th id="assigned" mat-sort-header="assignto">Assigned To</th>
+                        <th id="description" mat-sort-header="description">Description</th>
+                        <th id="status" mat-sort-header="status">Status</th>
+                        <th id="action" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr class="row1" (click)="view(i)" *ngFor="let object of sortedIssues | paginate:{ itemsPerPage: 5, currentPage: p };let i of index">
+                        <td>{{object.title}}</td>
+                        <td>{{object.reporter}}</td>
+                        <td>{{object.assignToName}}</td>
+                        <td>{{object.description}}</td>
+                        <td>{{object.status}}</td>
+                        <td><button id="edit" class="btn btn-primary" (click)="$event.stopPropagation();edit(i)">Edit</button></td>
+                        <td><button id="delete" class="btn btn-primary" (click)="$event.stopPropagation();delete(i)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <div *ngIf="isEmpty==true" id="nodata" class="alert alert-danger">
+            No Issues Found
+        </div>
+    </div>
+</body>
+
+</html>

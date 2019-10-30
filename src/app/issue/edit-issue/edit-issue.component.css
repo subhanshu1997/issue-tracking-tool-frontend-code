@@ -1,0 +1,172 @@
+#row-1 {
+    padding: 2%;
+  }
+  
+  #row-6 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-2 {
+    padding: 2%;
+    border: 1px solid #783496;
+    margin: 0px;
+  }
+  
+  #row-3 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-4 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-5 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #row-form {
+    background-color: rgba(244,236,236,0.53);
+  }
+  
+  #logout {
+    right: 0px;
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+
+  #container-form {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  #navbar-container {
+    width: 100%;
+  }
+
+  #issues {
+    font-size: 22px;
+    background-color: rgba(0,123,255,0);
+    color: rgb(14,14,14);
+    font-weight: 600;
+    border-width: 1px;
+  }
+  
+  #navbar {
+    background-color: rgba(251,251,251,0.46);
+  }
+  
+  #create-issue {
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+
+  #checkbox-container{
+    width:100%;
+    text-align:center;
+    color: #2f1f36;
+  }
+  
+  #section {
+    width: 100%;
+    background-color: rgba(255,255,255,0.12);
+  }
+  #checkbox{
+    width: 20px;
+    height: 20px;
+  }
+  
+  #body {
+    height: auto;
+    min-height: 100%;
+    background-color: rgb(215,107,107);
+    background-image: url("../../../assets/img/issue.gif");
+  }
+  
+  #issue-heading {
+    color: #593967;
+  }
+  
+  #title-input {
+    background-color: rgba(128,128,128,0.66);
+    color: rgb(255,255,255);
+    border-color: #783496;
+  }
+  
+  #title {
+    color: #3e234a;
+  }
+  
+  #reporter-dropdown {
+    width: 50%;
+    background-color: rgba(247,244,245,0.67);
+    color: rgb(25,24,24);
+    border-color: #783496;
+  }
+  
+  #status-dropdown {
+    width: 50%;
+    background-color: rgba(247,244,245,0.67);
+    color: rgb(25,24,24);
+    border-color: #783496;
+  }
+  
+  #column-form {
+    padding: 0px;
+  }
+  
+  #status {
+    color: #3e234a;
+  }
+  
+  #date-of-issue {
+    color: #3e234a;
+  }
+  
+  #reporter {
+    color: #3e234a;
+  }
+  
+  #date {
+    background-color: rgba(128,128,128,0.66);
+    color: rgb(255,255,255);
+    border-color: #783496;
+  }
+  
+  #submit {
+    background-color: #783496;
+    border: 0px;
+    width: 50%;
+    font-size: 20px;
+  }
+  #row-7 {
+    padding: 2%;
+    border: 1px solid #783496;
+    border-top: 0px;
+    margin: 0px;
+  }
+  
+  #Description {
+    color: #3e234a;
+  }
+  #rich-text-editor{
+      width: 100%;
+      background-color: white;
+      height: fit-content;
+  }
+
+  

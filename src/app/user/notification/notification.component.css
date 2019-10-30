@@ -1,0 +1,108 @@
+#navbar-container {
+    width: 100%;
+  }
+
+  #card{
+    background-color: rgba(251, 251, 251, 0.63);
+    margin: 1%;
+    /*box-shadow: 5px 5px 5px 5px rgba(251, 251, 251, 0.863);*/
+  }
+
+  #card:hover{
+      cursor: pointer;
+      box-shadow: 5px 5px 5px 5px rgba(198, 221, 223, 0.582);
+  }
+  body {
+    background-image: url("../../../assets/img/test2.jpg");
+    background-size: cover;
+    height: auto;
+    min-height: 100%;
+  }
+  
+  :host {
+    height: 100%
+}
+  #logout {
+    right: 0px;
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+  
+  #navbar-container {
+    width: 100%;
+  }
+  
+  #section {
+    width: 100%;
+    background-color: rgba(255,255,255,0.12);
+  }
+  
+  #table {
+    font-size: 3vh;
+    color: rgb(7,7,7);
+  }
+  
+  #title {
+    font-size: 23px;
+    color: rgb(243,245,247);
+  }
+  
+  #assigned {
+    font-size: 23px;
+    color: rgb(243,245,247);
+  }
+  
+  #description {
+    font-size: 23px;
+    color: rgb(243,245,247);
+  }
+  
+  #reporter {
+    font-size: 23px;
+    color: rgb(243,245,247);
+  }
+  
+  #status {
+    font-size: 23px;
+    color: rgb(243,245,247);
+  }
+
+  #action{
+    font-size: 23px;
+    color: rgb(243,245,247);
+    width: 100vw;
+    text-align: center;
+  }
+  
+  #table-body {
+    font-size: 19px;
+    color: rgb(253,254,255);
+  }
+  
+  #issues {
+    font-size: 22px;
+    background-color: rgba(0,123,255,0);
+    color: rgb(14,14,14);
+    font-weight: 600;
+    border-width: 1px;
+  }
+
+  #nodata{
+    text-align: center;
+  }
+
+  
+  #navbar {
+    background-color: rgba(251,251,251,0.46);
+  }
+  
+  #create-issue {
+    background-color: rgba(0,123,255,0);
+    font-size: 21px;
+    color: rgb(14,14,14);
+    font-weight: 600;
+  }
+  
+  

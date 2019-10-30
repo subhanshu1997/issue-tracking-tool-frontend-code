@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Issue</title>
+</head>
+
+<body id="body">
+        <div class="container" id="navbar-container">
+                <section id="section">
+                    <nav class="navbar navbar-light navbar-expand-md" id="navbar">
+                        <div class="container-fluid"><button class="btn btn-primary" [routerLink]="['/home']" id="issues" type="button">Issues</button><button class="btn btn-primary" [routerLink]="['/notification']" id="issues" type="button">Notifications</button><button class="btn btn-primary" [routerLink]="['/view-all-issue']" id="issues" type="button">View All Issues</button><button class="btn btn-primary" id="create-issue" [routerLink]="['/issue']"  type="button">Create Issue</button><button class="btn btn-primary" id="logout" (click)="logout()" type="button">Logout</button></div>
+                    </nav>
+                </section>
+            </div>
+    <div class="container" id="main-container">
+        <div class="row text-center" id="row-1">
+            <div class="col">
+                <h1 id="issue-heading">Report an Issue</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="container-form">
+        <div class="row" id="row-form">
+            <div class="col" id="column-form" style="background-color: rgba(249,246,246,0.16);">
+                <form [formGroup]="issueForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row" id="row-2">
+                        <div class="col text-center" id="column-title">
+                            <h3 id="title">Title</h3>
+                        </div>
+                        <div class="col"><input name="title" readonly class="form-control" formControlName="title" [ngClass]="{'is-invalid':issueForm.get('title').touched && issueForm.get('title').invalid}" type="text" id="title-input" placeholder="Title">
+                        <div class="invalid-feedback">
+                            <div>
+                                Title is required
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="row-3">
+                        <div class="col text-center" id="column-reporter">
+                            <h3 id="reporter">Assigned To</h3>
+                        </div>
+                        <div class="col text-center" id="column-dropdown">
+                            <div><input readonly formControlName="reporter" class="btn btn-primary" id="reporter-dropdown">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-row" id="row-4">
+                        <div class="col text-center" id="column-date">
+                            <h3 id="date-of-issue">Date Of Issue</h3>
+                        </div>
+                        <div class="col"><input readonly class="form-control" formControlName="date" id="date"></div>
+                    </div>
+                    <div class="form-row" id="row-7">
+                        <div class="col text-center" id="column-date">
+                            <h3 id="Description">Description</h3>
+                        </div>
+                        <div aria-readonly="true" class="col"><input id="rich-text-editor" class="form-control" readOnly="true" formControlName="description" [ngClass]="{'is-invalid':issueForm.get('description').touched && issueForm.get('description').invalid}">
+                        <div *ngIf="issueForm.get('description').touched && issueForm.get('description').value==''" class="text-danger">
+                            Please enter description
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="row-5">
+                        <div class="col text-center" id="column-status">
+                            <h3 id="status">Status</h3>
+                        </div>
+                        <div class="col text-center" id="column-dropdown2">
+                            <div class="dropdown"><input formControlName="status" class="btn btn-primary dropdown-toggle"  id="status-dropdown" >
+                                <!-- <option *ngFor="let object of statusItems" [value]="object">{{object}}</option> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button id="edit" (click)=edit()>Edit</button>
+                        <button id="watchList" (click)="addToWatchList()">{{isInWatchList}}</button>
+                        <button id="delete" (click)="delete()">Delete</button>
+                    </div>
+                    <div id="watchListDiv">
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<div class="container" id="main-container">
+        <table class="table">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let object of commentArray">
+                        <td id="table-comment"><textarea readonly class="textarea">{{object.comment}}</textarea></td>
+                        <td id="table-username"><textarea readonly class="textarea">Posted By:  {{object.userName}}</textarea></td>
+                    </tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+</div>
+<div class="container" id="comment-container">
+    <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+        <input type="text" id="comment" name="comment" class="form-control" formControlName="comment" [ngClass]="{'is-invalid':commentForm.get('comment').touched && commentForm.get('comment').invalid}" placeholder="Post a comment"><button [disabled]="!commentForm.valid" class="btn btn-primary" id="button" type="submit">Post a Comment</button>
+        <div class="invalid-feedback">
+                <div>
+                    Comment is required
+                </div>
+            </div>
+    </form>
+</div>
+</body>
+
+</html>
