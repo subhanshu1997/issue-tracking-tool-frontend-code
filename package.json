@@ -1,5 +1,5 @@
 {
-  "name": "meeting-planner-frontend",
+  "name": "issue-tracking-tool",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
