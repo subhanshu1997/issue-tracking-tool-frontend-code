@@ -32,13 +32,14 @@ export class ViewAllIssueComponent implements OnInit {
   private url='http://localhost:3000'
   //private url="http://api.my-app-dev.tk"
   public socket
-    constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) { }
+    constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) { 
+      this.socket=io(this.url) 
+    }
     status:boolean=false
     searchBool:boolean=false
     ngOnInit() {
       this.appService.fetchAllIssues().subscribe(
         data=>{
-          console.log(data)
           if(data.message=='Authentication Token Is Missing In Request'){
             this.router.navigate['/login']
             this.toastr.error('Please login first')
@@ -52,12 +53,6 @@ export class ViewAllIssueComponent implements OnInit {
           this.status=true}
         }
       )
-      this.socket=io(this.url)
-      this.socket.on(window.sessionStorage.userId,(data)=>{
-        this.toastr.info(data,'',{
-          timeOut:5000
-        })
-      })
     }
 
     onKey(event: any) { // without type info
@@ -66,7 +61,6 @@ export class ViewAllIssueComponent implements OnInit {
       }
       this.appService.search(data).subscribe(
         data=>{
-          console.log(data)
           this.issuesCollection=data.data
           if(this.issuesCollection.length==0){
             this.toastr.error("No data fetched from search")
@@ -109,9 +103,13 @@ export class ViewAllIssueComponent implements OnInit {
       this.appService.deleteIssue(i).subscribe(
         data=>{
           if(data.message=="Issue Deleted Successfully"){
-            // location.reload(true)
             this.ngOnInit()
             this.toastr.success(data.message)
+            this.appService.getWatchList(i.title).subscribe(
+              data=>{
+                this.socket.emit('delete-issue',data.data)
+              }
+            )
           }else{
             this.toastr.error(data.message)
           }

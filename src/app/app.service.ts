@@ -54,7 +54,6 @@ lastName:String
 
   addToWatchList=(data):any=>{
     data.authToken=window.sessionStorage.getItem('authToken')
-    console.log(data.authToken)
     return this.http.post(`${this.url}/addToWatchList`,data)
   }
 
@@ -85,7 +84,6 @@ lastName:String
   }
 
   public isInWatchList=(data):any=>{
-    console.log("data is"+data.title)
     data.authToken=window.sessionStorage.getItem('authToken')
     return this.http.post(`${this.url}/isInWatchList`,data)
   }
@@ -122,7 +120,6 @@ lastName:String
 
   public fetchIssueData=(data):any=>{
     data.authToken=window.sessionStorage.getItem('authToken')
-    console.log("data in appservice"+data.title)
     return this.http.post(`${this.url}/fetchIssuedata`,data)
   }
 }

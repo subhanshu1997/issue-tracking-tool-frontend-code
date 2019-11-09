@@ -12,8 +12,8 @@ import * as io from 'socket.io-client'
   styleUrls: ['./view-issue.component.css']
 })
 export class ViewIssueComponent implements OnInit {
-  private url='http://localhost:3000'
- // private url="http://api.my-app-dev.tk"
+private url='http://localhost:3000'
+//private url="http://api.my-app-dev.tk"
 
 public socket
   issueForm=new FormGroup({
@@ -27,7 +27,7 @@ public socket
     comment:new FormControl('',Validators.required)
   })
   statusItems:String[]=[
-    "Resolved","Pending"
+    "In-Backlog","In-Test","In-Process","Done"
   ]
  isInWatchList:String="Remove From Watch List"
   issueTitle:String
@@ -39,8 +39,8 @@ public socket
       this.issueForm.get('date').setValue(todayDate)
       this.issueForm.get('status').setValue(this.statusItems[0])
       this.activatedRoute.queryParams.subscribe(
-        data=>{   
-          console.log(data)
+        data=>{
+          this.socket=io(this.url)   
           this.issueTitle=data["title"]   
           this.fetchIssueData(this.issueTitle)
           this.fetchComments()
@@ -52,8 +52,7 @@ public socket
 
   }
 
-  ngOnInit() {
-    this.socket=io(this.url)   
+  ngOnInit() {   
   }
 
   fetchIssueData=(title)=>{
@@ -62,7 +61,6 @@ public socket
     }
     this.appService.fetchIssueData(data).subscribe(
       data=>{
-        console.log(data)
         if(data.message=='Issue doesnot exist'){
           this.toastr.error("Issue does not exist")
           this.router.navigate(['/home'])
@@ -80,7 +78,6 @@ public socket
         }
         this.appService.isInWatchList(watchListData).subscribe(
           data=>{
-            console.log(data)
             if(data.data==false){
               this.isInWatchList="Add to WatchList"
             }
@@ -139,7 +136,6 @@ public socket
     }
     this.appService.deleteIssue(data).subscribe(
       data=>{
-        console.log(data)
         if(data.message=="Issue Deleted Successfully"){
           this.appService.getWatchList(this.issueForm.get('title').value).subscribe(
             data=>{
@@ -165,7 +161,6 @@ public socket
     }
     this.appService.fetchComments(data).subscribe(
       data=>{
-        console.log(data)
         this.commentArray=data.data
         if(this.commentArray.length==0){
           this.isEmpty=true

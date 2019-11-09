@@ -18,8 +18,6 @@ notifications:any
     }
     this.appService.fetchNotifications(data).subscribe(
       data=>{
-        console.log(data)
-        console.log(data.data)
         this.notifications=data.data
         if(this.notifications.length==0){
           this.isEmpty=true
@@ -41,7 +39,6 @@ notifications:any
   logout=()=>{
     this.appService.logout().subscribe(
       data=>{
-        console.log(data)
         if(data.message="Logged Out Successfully"){
           window.sessionStorage.clear()
           this.toastr.success(data.message)

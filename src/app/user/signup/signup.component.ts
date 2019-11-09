@@ -43,7 +43,6 @@ export class SignupComponent implements OnInit {
     }
     this.appService.signup(data).subscribe(
       data=>{
-        console.log(data)
         if(data.message=='User Cannot Be Created.User Already Present'){
           this.toastr.error(data.message)
         }

@@ -14,9 +14,9 @@ import * as io from 'socket.io-client'
   styleUrls: ['./edit-issue.component.css']
 })
 export class EditIssueComponent implements OnInit {
-  private url='http://localhost:3000'
-  //private url="http://api.my-app-dev.tk"
-  private socket
+ private url='http://localhost:3000'
+ // private url="http://api.my-app-dev.tk"
+  public socket
   editAssign:boolean=false
   issueForm=new FormGroup({
     title:new FormControl('',Validators.required),
@@ -26,7 +26,7 @@ export class EditIssueComponent implements OnInit {
     status:new FormControl('')
   })
   statusItems:String[]=[
-    "Resolved","Pending"
+    "In-Backlog","In-Test","In-Process","Done"
   ]
   reporterItems:String[]=[
   ]
@@ -43,8 +43,8 @@ export class EditIssueComponent implements OnInit {
       this.issueForm.get('status').setValue(this.reporterItems[0])
       this.activatedRoute.queryParams.subscribe(
         data=>{
+          this.socket=io(this.url) 
           let title=data["title"]
-          // this.ngOnInit()
           if(title!=undefined)
           this.fetchIssueData(title)
         }
@@ -54,7 +54,6 @@ export class EditIssueComponent implements OnInit {
     ngOnInit() {
       this.appService.fetchIssuesInit().subscribe(
         data=>{
-          console.log(data)
           for(let object of data.data){
             this.indexItems.push(object.userId)
             this.reporterItems.push(object.firstName+" "+object.lastName)
@@ -67,7 +66,6 @@ export class EditIssueComponent implements OnInit {
           }
         }
       )
-      this.socket=io(this.url) 
     }
 
     Assign=()=>{
@@ -81,9 +79,7 @@ export class EditIssueComponent implements OnInit {
       let fetchIssueObject:any
       this.appService.fetchIssueData(data).subscribe(
         data=>{
-          console.log(data)
           if(data.message=="Issue doesnot exist"){
-            console.log("issue does not exist")
             this.router.navigate['/home']
             this.toastr.error("Issue does not exist")
           }
@@ -97,7 +93,7 @@ export class EditIssueComponent implements OnInit {
           this.assignto=data.data.assignto
           this.reporter=data.data.reporter
           this.assignToName=data.data.assignToName
-          console.log("Fetch"+fetchIssueObject.title)}
+          }
         }
       )
     }
@@ -133,7 +129,6 @@ export class EditIssueComponent implements OnInit {
 
       this.appService.editIssue(data).subscribe(
         data=>{
-          console.log(data)
           if(data.message=="Issue not Edited"){
             this.toastr.error(data.message)
             this.router.navigate(['/home'])

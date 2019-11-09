@@ -10,6 +10,7 @@ private url='http://localhost:3000'
 private socket
   constructor(private http:HttpClient,private toastr:ToastrService) {
     // this.socket=io(this.url)
+    console.log(this.socket)
    }
 
    

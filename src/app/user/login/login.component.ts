@@ -27,14 +27,7 @@ status=false
     }
     this.appService.signin(data).subscribe(
       data=>{
-        console.log(data)
-        // console.log(data.data.userDetails.userId)
-        // localStorage.setItem('userName',data.data.userDetails.userName)
-        
-        // console.log(data.data.authToken)
         if(data.message=='Invalid Username Or Password'){
-        // this.status=true
-        // this.errormessage=data.message
         this.toastr.error(data.message)      
       }
         else{

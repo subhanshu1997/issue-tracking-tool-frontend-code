@@ -21,7 +21,7 @@ issueForm=new FormGroup({
   status:new FormControl('')
 })
 statusItems:String[]=[
-  "Resolved","Pending"
+  "In-Backlog","In-Test","In-Process","Done"
 ]
 reporterItems:String[]=[
 ]
@@ -36,12 +36,12 @@ public socket
     this.issueForm.get('date').setValue(todayDate)
     this.issueForm.get('status').setValue(this.statusItems[0])
     this.issueForm.get('status').setValue(this.reporterItems[0])
+    this.socket=io(this.url)   
    }
 
   ngOnInit() {
     this.appService.fetchIssuesInit().subscribe(
       data=>{
-        console.log(data)
         for(let object of data.data){
           if(this.reporterItems.indexOf(object.firstName+" "+object.lastName)<0){
           this.indexItems.push(object.userId)
@@ -50,8 +50,7 @@ public socket
           this.issueForm.get('status').setValue(this.statusItems[0])
         }
       }
-    )
-    this.socket=io(this.url)    
+    ) 
   }
 
   sendMsg=()=>{
@@ -71,10 +70,8 @@ public socket
       description:description,
       status:this.issueForm.get('status').value
     }
-    console.log(data.description.replace(/<\/?[^>]+(>|$)/g, ""))
     this.appService.reportIssue(data).subscribe(
       data=>{
-        console.log(data)
         if(data.message=='Issue Reported Succesfully'){
           let index=this.reporterItems.indexOf(this.issueForm.get('assignto').value)
     let userId=this.indexItems[index]
@@ -105,6 +102,5 @@ public socket
   })
   }
   print=(i)=>{
-    console.log(i)
   }
 }

@@ -24,15 +24,16 @@ sample:any[]=[{assign:"Hello"}]
 isEmpty:boolean=true
 p:number=1
 sortedIssues:any[]
- private url='http://localhost:3000'
+private url='http://localhost:3000'
 //private url="http://api.my-app-dev.tk"
 public socket
-  constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) { }
+  constructor(private appService:AppService,private socketService:SocketService,private toastr:ToastrService,private router:Router,private editIssueComponent:EditIssueComponent) {
+    this.socket=io(this.url)  
+  }
   status:boolean=false
   ngOnInit() {
     this.appService.fetchIssues().subscribe(
       data=>{
-        console.log(data)
         if(data.message=='Authentication Token Is Missing In Request'){
           this.router.navigate['/login']
           this.toastr.error('Please login first')
@@ -43,14 +44,11 @@ public socket
           this.isEmpty=false
         this.issuesCollection=data.data
         this.sortedIssues=this.issuesCollection
-        // for(let object of this.issuesCollection){
-        //   object.assignto=window.sessionStorage.name
-        // }
         this.status=true}
       }
     )
-    this.socket=io(this.url)
     this.socket.on(window.sessionStorage.userId,(data)=>{
+      if(data.action){
       if(data.action=="Comment"){
         this.toastr.info("A comment has been posted on issue with title "+data.title)
       }else if(data.action=="Edit"){
@@ -58,6 +56,10 @@ public socket
       else if(data.action=="Delete"){
         this.toastr.info("Issue with title "+data.title+" has been deleted")
       }
+    }
+    else{
+      this.toastr.info("An Issue has been reported to you")
+    }
     })
   }
 
@@ -65,7 +67,6 @@ public socket
   logout=()=>{
     this.appService.logout().subscribe(
       data=>{
-        console.log(data)
         if(data.message="Logged Out Successfully"){
           window.sessionStorage.clear()
           this.toastr.success(data.message)
@@ -87,9 +88,7 @@ public socket
   delete=(i)=>{
     this.appService.deleteIssue(i).subscribe(
       data=>{
-        console.log(data)
         if(data.message=="Issue Deleted Successfully"){
-          // location.reload(true)
           this.ngOnInit()
           this.toastr.success(data.message)
           this.appService.getWatchList(i.title).subscribe(
